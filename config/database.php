@@ -107,6 +107,9 @@ return [
     'redis' => [
 
         'client' => 'predis',
+        'options' => [
+            'prefix' => 'vasarbbs:',
+        ],
 
         'default' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),

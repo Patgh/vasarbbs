@@ -23,7 +23,7 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
-        $this->authorize($user);
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
@@ -31,7 +31,7 @@ class UsersController extends Controller
     {
         //dd($request->avatar);
         //$user->update($request->all());
-        $this->authorize($user);
+        $this->authorize('update', $user);
         $data = $request->all();
 
         if ($file = $request->avatar) {

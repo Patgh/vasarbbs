@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        // except 方法来设定 指定动作 不使用 Auth 中间件进行过滤
+        // 首选 except 方法，这样的话，当你新增一个控制器方法时，默认是安全的，此为最佳实践。
+        $this->middleware('auth', ['except'=> ['show']]);
+    }
+
     public function show(User $user)
     {
         return view('users.show', compact('user'));
@@ -16,6 +23,7 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize($user);
         return view('users.edit', compact('user'));
     }
 
@@ -23,7 +31,7 @@ class UsersController extends Controller
     {
         //dd($request->avatar);
         //$user->update($request->all());
-
+        $this->authorize($user);
         $data = $request->all();
 
         if ($file = $request->avatar) {

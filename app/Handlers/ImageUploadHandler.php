@@ -2,6 +2,7 @@
 
 namespace App\Handlers;
 
+// Laravel 5.5 自带了 扩展包发现 ，所以不需要手动添加 Provider。
 use Image;
 
 /**

@@ -9,8 +9,7 @@ class CreateTopicsTable extends Migration
 	{
 		Schema::create('topics', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('
-title')->index();
+            $table->string('title')->index();
             $table->text('body');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('category_id')->unsigned()->index();
@@ -19,8 +18,7 @@ title')->index();
             $table->integer('last_reply_user_id')->unsigned()->default(0);
             $table->integer('order')->unsigned()->default(0);
             $table->text('excerpt')->nullable();
-            $table->string('slug')->nullable
-();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
 	}

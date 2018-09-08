@@ -33,7 +33,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'edit', 'update']]);
-Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 
 // 图片上传
 Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');

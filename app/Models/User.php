@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Traits\ActiveUserHelper;
+use App\Models\Traits\LastActivedAtHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
@@ -11,6 +12,7 @@ class User extends Authenticatable
 {
     use HasRoles;
     use ActiveUserHelper;
+    use LastActivedAtHelper;
 
     use Notifiable {
         notify as protected laravelNotify;
@@ -43,7 +45,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'introduction'
+        'name', 'email', 'password', 'avatar', 'introduction', 'last_actived_at'
     ];
 
     /**

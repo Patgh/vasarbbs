@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->command('vasarbbs:calculate-active-user')->hourly(); // everyMinute();
+        // 每日零时执行一次
+        $schedule->command('vasarbbs:sync-user-actived-at')->dailyAt('00:00');
     }
 
     /**
